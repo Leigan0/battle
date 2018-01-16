@@ -1,17 +1,23 @@
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
-   set :sessions, true
+  enable :sessions
 
   get '/' do
     erb :index
-    # 'Hello Battle!!!!!!'
+
   end
 
   post '/names' do
     @player_1_name = params[:player_1_name]
     @player_2_name =  params[:player_2_name]
-    erb :play
+    session[:names] = @player_1_name, @player_2_name
+    redirect '/play'
+  end
+
+  get '/play' do
+    @player_1_name, @player_2_name = session[:names]
+    erb :play 
   end
 
   run! if app_file == $0 # adding this allows you to run ruby app.rb within IRB
