@@ -3,6 +3,8 @@ require './app'
 require 'capybara'
 require 'rspec'
 
+# alternative way to require app require File.join(File.dirname(__FILE__), '..', 'app.rb')
+
 ENV['RACK_ENV'] = 'test'
 Capybara.app = Battle
 #

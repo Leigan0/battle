@@ -4,7 +4,15 @@ class Battle < Sinatra::Base
    set :sessions, true
 
   get '/' do
-    'Hello Battle!!!!!!'
+    erb :index
+    # 'Hello Battle!!!!!!'
+  end
+
+  post '/names' do
+    @player_1_name = params[:player_1_name]
+    @player_2_name =  params[:player_2_name]
+    p params
+    erb :play
   end
 
   run! if app_file == $0 # adding this allows you to run ruby app.rb within IRB
