@@ -2,6 +2,7 @@ require 'capybara/rspec'
 require './app'
 require 'capybara'
 require 'rspec'
+require 'features/web_helpers'
 
 # alternative way to require app require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
