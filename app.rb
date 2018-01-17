@@ -19,7 +19,7 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    $player_2.attacked
+    $player_1.attack($player_2)
     redirect '/play'
   end
 
