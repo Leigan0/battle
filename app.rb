@@ -17,7 +17,8 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    $game.attack($game.player_2)
+    $game.attack($game.whose_turn)
+    $game.next_round
     redirect '/play'
   end
 
@@ -26,6 +27,7 @@ class Battle < Sinatra::Base
     @player_2_name = $game.player_2.name
     @player_1_hp = $game.player_1.hit_points
     @player_2_hp = $game.player_2.hit_points
+    @current_player_turn = $game.whose_turn.name
     erb :play
   end
 
