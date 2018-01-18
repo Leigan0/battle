@@ -6,6 +6,10 @@ require './lib/attack'
 class Battle < Sinatra::Base
   enable :sessions
 
+  before do
+    @game = Game.instance
+  end
+
   get '/' do
     erb :index
   end
@@ -13,34 +17,30 @@ class Battle < Sinatra::Base
   post '/names' do
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
-    Game.create(player_1, player_2)
+    Game.build(player_1, player_2)
     redirect '/play'
   end
 
   post '/attack' do
-    Attack.new.attack(Game.instance.player_under_attack)
+    Attack.new.attack(@game.player_under_attack)
     redirect '/attack'
   end
 
   get '/attack' do
-    @game = Game.instance
     erb :attack
   end
 
   post '/switch_turn' do
-    @game = Game.instance
     @game.switch_turn
     redirect '/play'
   end
 
   get '/play' do
-    @game = Game.instance
     redirect '/gameover' if @game.gameover?
     erb :play
   end
 
   get '/gameover' do
-    @game = Game.instance
     erb :gameover
   end
 

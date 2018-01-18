@@ -1,11 +1,11 @@
 class Game
 
-    def self.create(player_1,player_2)
-      @@game = Game.new(player_1,player_2)
+    def self.build(player_1,player_2)
+      @game = Game.new(player_1,player_2)
     end
 
     def self.instance
-      @@game
+      @game
     end
 
   attr_reader :player_1, :player_2, :players
