@@ -13,11 +13,11 @@ class Game
   end
 
   def player_under_attack
-    @players[1]
+    @players.last
   end
 
   def current_player
-    @players[0]
+    @players.first
   end
 
   def switch_turn
