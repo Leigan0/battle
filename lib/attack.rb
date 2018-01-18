@@ -1,11 +1,7 @@
 class Attack
   attr_reader :player
-  
-  def initialize(player)
-    @player = player
-  end
 
-  def attack
+  def attack(player)
     player.attacked
   end
 end

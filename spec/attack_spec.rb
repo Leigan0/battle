@@ -2,16 +2,12 @@ require 'attack'
 
 describe Attack do
   let(:player) { double :player }
-  subject(:attack) { described_class.new(player)}
-
-  it 'accepts a argument on #initialize and sets player' do
-    expect(subject.player).to eq player
-  end
+  subject(:attack) { described_class.new}
 
   describe '#attack' do
-    it 'calls attacked on a player' do
+    it 'calls attacked on a player given as argument' do
       expect(player).to receive(:attacked)
-      subject.attack
+      subject.attack(player)
     end
   end
 end
