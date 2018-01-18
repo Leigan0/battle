@@ -19,9 +19,7 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game = $game
-    Attack.new.attack($game.player_under_attack)
-    p @game.player_1.hit_points
-    p @game.player_2.hit_points
+    Attack.new.attack(@game.player_under_attack)
     redirect '/attack'
   end
 
@@ -31,7 +29,8 @@ class Battle < Sinatra::Base
   end
 
   post '/switch_turn' do
-    $game.switch_turn
+    @game = $game
+    @game.switch_turn
     redirect '/play'
   end
 
