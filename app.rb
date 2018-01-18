@@ -18,7 +18,7 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game = $game
-    @game.attack(@game.player_under_attack)
+    Attack.new(@game.player_under_attack).attack
     redirect '/attack'
   end
 

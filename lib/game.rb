@@ -8,10 +8,6 @@ class Game
     @players = [player_1,player_2]
   end
 
-  def attack(player)
-    player.attacked
-  end
-
   def player_under_attack
     @players.last
   end
