@@ -3,7 +3,7 @@ feature 'Game over' do
     sign_in_and_play
     click_button 'attack'
     click_button 'OK'
-    allow(player_2).to receives(:hit_points).and_return 0
+    allow($game.player_2).to receive(:dead?).and_return true
     expect(page).to have_content 'Leigh-ann, YOU LOSE !!!'
   end
 end
