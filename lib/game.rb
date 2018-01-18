@@ -19,4 +19,8 @@ class Game
   def switch_turn
     @players.reverse!
   end
+
+  def gameover?
+    @player_1.dead? || @player_2.dead?
+  end 
 end
