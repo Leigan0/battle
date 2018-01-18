@@ -1,5 +1,5 @@
-<h1> <%= @player_1_name %> vs <%= @player_2_name %> </h1>
-<h1> <%=@current_player_turn%>'s turn</h1>
+<h1> <%= @game.player_1.name%> vs <%= @game.player_2.name %> </h1>
+<h1> <%= @game.current_player.name %>'s turn</h1>
 
 <div>
   <img style = "border: 4px dashed green;" src="https://img00.deviantart.net/9b8c/i/2013/140/3/d/ready____pounce____by_bucketofmilk-d65wrhr.jpg">
@@ -11,5 +11,5 @@
 </div>
 
 <div>
-  <h2> <%= @player_1_name %> hit points <%= @player_1_hp %>  <%= @player_2_name %> hit points <%= @player_2_hp%> </h2>
+  <h2> <%= @game.player_1.name %> hit points <%=  @game.player_1.hit_points %>  <%= @game.player_2.name %> hit points <%= @game.player_2.hit_points %> </h2>
 </div>
