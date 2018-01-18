@@ -1,0 +1,10 @@
+<% if @game.player_1.dead? %>
+<h1> <%= @game.player_1.name %>, YOU LOSE !!</h1>
+<% else %>
+<h1> <%= @game.player_2.name %>, YOU LOSE !!</h1>
+<% end %>
+
+<div>
+  <img style = "border: 4px dashed purple;" src="https://cdn77.sadanduseless.com/wp-content/uploads/2015/05/sleepy13.jpg">
+</div>
+<div>
