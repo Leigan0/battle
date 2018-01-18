@@ -46,4 +46,15 @@ let(:player_2) { double :player_2, dead?: false }
       expect(game).not_to be_gameover
     end
   end
+
+  describe 'losing_player' do
+    it 'returns player one if player one has 0 hit points' do
+      allow(player_1).to receive(:dead?).and_return true
+      expect(game.losing_player).to eq player_1
+    end
+    it 'returns player two if player two has 0 hit points' do
+      allow(player_2).to receive(:dead?).and_return true
+      expect(game.losing_player).to eq player_2
+    end
+  end
 end

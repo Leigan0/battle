@@ -9,18 +9,23 @@ class Game
   end
 
   def player_under_attack
-    @players.last
+    players.last
   end
 
   def current_player
-    @players.first
+    players.first
   end
 
   def switch_turn
-    @players.reverse!
+    players.reverse!
   end
 
   def gameover?
-    @player_1.dead? || @player_2.dead?
-  end 
+    player_1.dead? || player_2.dead?
+  end
+
+  def losing_player
+    player_1.dead? ? player_1 : player_2
+  end
+
 end
