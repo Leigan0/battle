@@ -21,4 +21,18 @@ describe Player do
       expect{player.attacked}.to change{player.hit_points}.by -10
     end
   end
+
+  describe 'dead?' do
+    it 'returns true if player hit_points equal to 0' do
+      10.times { player.attacked }
+      expect(player).to be_dead
+    end
+    it 'returns true if player hit_points less than 0' do
+      11.times { player.attacked }
+      expect(player).to be_dead
+    end
+    it 'returns false if player hit points more than 0' do
+      expect(player).not_to be_dead
+    end
+  end
 end
