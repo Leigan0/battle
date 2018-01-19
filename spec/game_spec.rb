@@ -56,5 +56,8 @@ let(:player_2) { double :player_2, dead?: false }
       allow(player_2).to receive(:dead?).and_return true
       expect(game.losing_player).to eq player_2
     end
+    it "Raises error if game if no player is dead" do
+      expect { game.losing_player }.to raise_error "No one has lost"
+    end 
   end
 end

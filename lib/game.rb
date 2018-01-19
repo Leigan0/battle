@@ -33,6 +33,7 @@ class Game
   end
 
   def losing_player
+    fail "No one has lost" if !gameover? 
     player_1.dead? ? player_1 : player_2
   end
 
