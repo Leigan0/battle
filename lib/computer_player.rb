@@ -1,9 +1,11 @@
-class ComputerPlayer
+require_relative 'Player'
 
-  attr_reader :name 
+class ComputerPlayer < Player
 
-  def initialize
-    @name = "Computer"
+  attr_reader :name
+
+  def initialize(name = "Computer")
+    super
   end
 
 end
