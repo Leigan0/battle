@@ -8,6 +8,21 @@ require './lib/computer_player'
 class Battle < Sinatra::Base
   enable :sessions
 
+  helpers do
+    def attack_player
+      Attack.new.damage(@game.player_under_attack)
+      redirect '/attack'
+    end
+
+    def player_selector(params)
+      if params == ""
+        ComputerPlayer.new
+      else
+        Player.new(params)
+      end
+    end
+  end
+
   before do
     @game = Game.instance
   end
@@ -18,14 +33,13 @@ class Battle < Sinatra::Base
 
   post '/names' do
     player_1 = Player.new(params[:player_1_name])
-    (params[:player_2_name]) == "" ? player_2 = ComputerPlayer.new : player_2 = Player.new(params[:player_2_name])
+    player_2 = player_selector(params[:player_2_name])
     Game.build(player_1, player_2)
     redirect '/play'
   end
 
   post '/attack' do
-    Attack.new.damage(@game.player_under_attack)
-    redirect '/attack'
+    attack_player
   end
 
   get '/attack' do
@@ -39,10 +53,7 @@ class Battle < Sinatra::Base
 
   get '/play' do
     redirect '/gameover' if @game.gameover?
-    if @game.current_player.is_a?(ComputerPlayer)
-      Attack.new.damage(@game.player_under_attack)
-      redirect '/attack'
-    end
+    attack_player if @game.current_player.is_a?(ComputerPlayer)
     erb :play
   end
 
