@@ -22,7 +22,7 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    Attack.new.attack(@game.player_under_attack)
+    Attack.new.damage(@game.player_under_attack)
     redirect '/attack'
   end
 

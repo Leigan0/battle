@@ -10,7 +10,6 @@ feature 'Players can attack each other' do
     expect(page).to have_content('Leigh-ann hit points 90')
     expect(page).not_to have_content('Leigh-ann hit points 100')
   end
-
   scenario 'Player 2 receives confirmation of attack on player 1' do
     sign_in_and_play
     attack_player_and_return

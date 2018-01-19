@@ -8,8 +8,8 @@ class Player
     @hit_points = DEFAULT_HITPOINTS
   end
 
-  def attacked
-    @hit_points -= 10
+  def attacked(hitpoints)
+    @hit_points -= hitpoints
   end
 
   def dead?

@@ -16,19 +16,19 @@ describe Player do
     end
   end
 
-  describe '#attacked' do
-    it 'reduces hp my 10' do
-      expect{player.attacked}.to change{player.hit_points}.by -10
+  describe '#attacked(hitpoints)' do
+    it 'reduces hp argument value' do
+      expect{player.attacked(10)}.to change{player.hit_points}.by -10
     end
   end
 
   describe 'dead?' do
     it 'returns true if player hit_points equal to 0' do
-      10.times { player.attacked }
+      player.attacked(Player::DEFAULT_HITPOINTS)
       expect(player).to be_dead
     end
     it 'returns true if player hit_points less than 0' do
-      11.times { player.attacked }
+      player.attacked(Player::DEFAULT_HITPOINTS + 10)
       expect(player).to be_dead
     end
     it 'returns false if player hit points more than 0' do
