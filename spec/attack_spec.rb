@@ -10,7 +10,7 @@ describe Attack do
       attack.damage(player)
     end
     it 'generates random damage points' do
-      expect(Kernel).to receive(:rand)
+      expect(attack).to receive(:rand)
       attack.damage(player)
     end
   end

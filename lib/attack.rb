@@ -6,6 +6,6 @@ class Attack
   end
 
   def random_damage_amount
-    Kernel.rand(1..50)
+    rand(1..50)
   end
 end

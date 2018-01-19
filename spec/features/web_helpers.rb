@@ -6,7 +6,7 @@ def sign_in_and_play
 end
 
 def attack_player_and_return
-  allow(Kernel).to receive(:rand).and_return(10)
+  allow_any_instance_of(Attack).to receive(:rand).and_return(10)
   click_button 'attack'
   click_button 'OK'
 end
